@@ -1,0 +1,124 @@
+{% extends "front-base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}Contact us{% endblock head_title %}
+
+{% block content %}
+    <div class="breadcrumb-area text-center shadow dark bg-cover padding-md text-light" style="background-image: url('{% static "frontend/assets/img/banner/23.jpg" %}');">
+        <div class="container">
+            <div class="breadcrumb-items">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Contact Us</h2>
+                    </div>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="active">Contact</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <!-- Start Contact ============================================= -->
+    <div class="contact-form-area default-padding">
+        <div class="container">
+            <div class="row">
+                <!-- Start Contact Form -->
+                <div class="col-lg-7 contact-forms">
+                    <div class="content">
+                        {% include "includes/alerts.html" %}
+                        <div class="heading">
+                            <h3>Let’s make the world better, together</h3>
+                        </div>
+                        <form method="POST" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {{ form.name }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {{ form.phone }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {{ form.subject }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group comments">
+                                        {{ form.message }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button type="submit" id="submit">
+                                        Send Message <i class="fa fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                <!-- End Contact Form -->
+                <div class="col-lg-5 address-info">
+                    <div class="address-items">
+                        <ul>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>
+                                    Our Location
+                                    <span>Bauchi, Nigeria.</span>
+                                </p>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope-open"></i>
+                                <p>
+                                    Send Us Mail
+                                    <span>Info@mujaddidifoundation.com</span>
+                                </p>
+                            </li>
+                            <li>
+                                <i class="fas fa-mobile-alt"></i>
+                                <p>
+                                    Call Us
+                                    <span>+234 8034343434</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Contact -->
+
+    <div class="maps-area">
+        <div class="google-maps">
+            
+        </div>
+    </div>
+    <!-- End Google Maps -->
+
+{% endblock content %}

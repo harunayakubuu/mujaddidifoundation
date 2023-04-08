@@ -1,0 +1,376 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>{% block head_title %}{% endblock head_title %} | Mujaddidi Foundation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'backend/assets/images/favicon.ico' %}">
+
+        <link href="{% static 'backend/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'backend/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'backend/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'backend/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'backend/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'backend/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Theme Config Js -->
+        <script src="{% static 'backend/assets/js/hyper-config.js' %}"></script>
+
+        <!-- App css -->
+        <link href="{% static 'backend/assets/css/app-saas.min.css' %}" rel="stylesheet" type="text/css" id="app-style" />
+
+        <link href="{% static 'backend/vendor/simplemde/simplemde.min.css' %}" rel="stylesheet" type="text/css" />
+
+        <!-- Icons css -->
+        <link href="{% static 'backend/assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body>
+        <!-- Begin page -->
+        <div class="wrapper">
+
+            <!-- ========== Topbar Start ========== -->
+            <div class="navbar-custom topnav-navbar">
+                <div class="container-fluid detached-nav">
+
+                    <!-- Topbar Logo -->
+                    <div class="logo-topbar">
+                        <!-- Logo light -->
+                        <a href="{% url 'accounts:dashboard' %}" class="logo-light">
+                            <span class="logo-lg">
+                                <img src="{% static 'backend/assets/images/logo.png' %}" alt="logo" height="22">
+                            </span>
+                            <span class="logo-sm">
+                                <img src="{% static 'backend/assets/images/logo-sm.png' %}" alt="small logo" height="22">
+                            </span>
+                        </a>
+
+                        <!-- Logo Dark -->
+                        <a href="index.html" class="logo-dark">
+                            <span class="logo-lg">
+                                <img src="{% static 'backend/assets/images/logo-dark.png' %}" alt="dark logo" height="22">
+                            </span>
+                            <span class="logo-sm">
+                                <img src="{% static 'backend/assets/images/logo-dark-sm.png' %}" alt="small logo" height="22">
+                            </span>
+                        </a>
+                    </div>
+
+                    <!-- Sidebar Menu Toggle Button -->
+                    <button class="button-toggle-menu">
+                        <i class="mdi mdi-menu"></i>
+                    </button>
+
+                    <!-- Horizontal Menu Toggle Button -->
+                    <button class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+
+                    <ul class="list-unstyled topbar-menu float-end mb-0">
+                        <li class="dropdown notification-list d-lg-none">
+                            <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="ri-search-line noti-icon"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
+                                <form class="p-3">
+                                    <input type="search" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                </form>
+                            </div>
+                        </li>
+
+                        
+                        <li class="notification-list d-none d-sm-inline-block">
+                            <a class="nav-link" href="{% url 'pages:index' %}">
+                                <i class="noti-icon"></i>
+                                Website
+                            </a>
+                        </li>
+
+                        <li class="notification-list d-none d-sm-inline-block">
+                            <a class="nav-link" href="javascript:void(0)" id="light-dark-mode">
+                                <i class="ri-moon-line noti-icon"></i>
+                            </a>
+                        </li>
+
+                        <li class="notification-list d-none d-md-inline-block">
+                            <a class="nav-link" href="#" data-toggle="fullscreen">
+                                <i class="ri-fullscreen-line noti-icon"></i>
+                            </a>
+                        </li>
+
+                        <li class="dropdown notification-list">
+                            <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                                aria-expanded="false">
+                                <span class="account-user-avatar"> 
+                                    <img src="{% static 'backend/assets/images/users/avatar-1.jpg' %}" alt="user-image" class="rounded-circle">
+                                </span>
+                                <span>
+                                    <span class="account-user-name">
+                                    {% if request.user.is_authenticated %}
+                                        {% if request.user.get_full_name %}
+                                            {{ request.user.get_full_name }}
+                                        {% else %}
+                                            {{ request.user.username | upper }}
+                                        {% endif %}
+                                    {% endif %}
+                                    </span>
+                                    <span class="account-position">Designation</span>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
+                                <div class=" dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <a href="{% url 'accounts:profile' %}" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-circle me-1"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <a href="{% url 'password_change' %}" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-edit me-1"></i>
+                                    <span>Settings</span>
+                                </a>
+
+                                <a href="{% url 'logout' %}" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-logout me-1"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+
+            <div class="leftside-menu">
+                <!-- Logo Light -->
+                <a href="{% url 'accounts:dashboard' %}" class="logo logo-light">
+                    <span class="logo-lg">
+                        <img src="{% static 'backend/assets/images/logo.png' %}" alt="logo" height="22">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="{% static 'backend/assets/images/logo-sm.png' %}" alt="small logo" height="22">
+                    </span>
+                </a>
+
+                <!-- Logo Dark -->
+                <a href="{% url 'accounts:dashboard' %}" class="logo logo-dark">
+                    <span class="logo-lg">
+                        <img src="{% static 'backend/assets/images/logo-dark.png' %}" alt="dark logo" height="22">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="{% static 'backend/assets/images/logo-dark-sm.png' %}" alt="small logo" height="22">
+                    </span>
+                </a>
+
+                <button type="button" class="btn button-sm-hover p-0" data-bs-toggle="tooltip" data-bs-placement="right" title="Show Full Sidebar">
+                    <i class="ri-checkbox-blank-circle-line align-middle"></i>
+                </button>
+
+                <div class="h-100" id="leftside-menu-container" data-simplebar>
+                    <div class="leftbar-user">
+                        <a href="pages-profile.html">
+                            <img src="{% static 'backend/assets/images/users/avatar-1.jpg' %}" alt="user-image" height="42"
+                                class="rounded-circle shadow-sm">
+                            <span class="leftbar-user-name">Dominic Keller</span>
+                        </a>
+                    </div>
+
+                    <ul class="side-nav">
+
+                        <li class="side-nav-title side-nav-item">Navigation</li>
+
+                        <li class="side-nav-item">
+                            <a href="{% url 'accounts:dashboard' %}" class="side-nav-link">
+                                <i class="uil-home-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-title side-nav-item">Apps</li>
+
+                        <li class="side-nav-item">
+                            <a href="apps-chat.html" class="side-nav-link">
+                                <i class="ri-hand-heart-fill"></i>
+                                <span>Orphans</span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarProjects" aria-expanded="false"
+                                aria-controls="sidebarProjects" class="side-nav-link">
+                                <i class="mdi mdi-mosque"></i>
+                                <span> Projects </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarProjects">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="{% url 'projects:projects_list' %}">Project List</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'projects:project_add' %}">New Project</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarEmpowerment" aria-expanded="false" aria-controls="sidebarEmpowerment"
+                                class="side-nav-link">
+                                <i class=" ri-open-arm-line"></i>
+                                <span class="menu-arrow"></span>
+                                <span>Empowerment</span>
+                            </a>
+                            <div class="collapse" id="sidebarEmpowerment">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="#">Women</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Youth</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarScholarships" aria-expanded="false"
+                                aria-controls="sidebarScholarships" class="side-nav-link">
+                                <i class="mdi mdi-school-outline"></i>
+                                <span> Scholarships </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarScholarships">
+                                <ul class="side-nav-second-level">
+                                    <li>
+                                        <a href="#">Full Scholarships</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Support</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="{% url 'contacts:contact_messages' %}" class="side-nav-link">
+                                <i class="uil-message"></i>
+                                <span>Contact Messages</span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="#" class="side-nav-link">
+                                <i class="ri-team-fill"></i>
+                                <span>Committee</span>
+                            </a>
+                        </li>
+
+                        <li class="side-nav-title side-nav-item">Settings</li>
+
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSettings" aria-expanded="false" aria-controls="sidebarForms"
+                                class="side-nav-link">
+                                <i class="ri-settings-5-line"></i>
+                                <span> Settings </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarSettings">
+                                <ul class="side-nav-second-level">
+                                    <li><a href="{% url 'accounts:profile' %}">Profile</a></li>                                   
+                                    <li><a href="{% url 'password_change' %}">Password Change</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="side-nav-item">
+                            <a href="{% url 'logout' %}" target="_blank" class="side-nav-link">
+                                <i class="ri-logout-box-line"></i>
+                                <span>Log out</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+
+            <div class="content-page">
+                <div class="content">
+
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        {% block content %}
+                        
+                        {% endblock content %}
+
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                &copy; Mujaddidi Foundation {% now 'Y' %}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- Datatables js -->
+        <script src="{% static 'backend/assets/vendor/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js' %}"></script>
+        <script src="{% static 'backend/assets/vendor/datatables.net-select/js/dataTables.select.min.js' %}"></script>
+
+        <script src="{% static 'backend/assets/js/vendor.min.js '%}"></script>
+
+        <script src="{% static 'backend/assets/vendor/apexcharts/apexcharts.min.js '%}"></script>
+
+        <script src="{% static 'backend/assets/js/ui/component.todo.js '%}"></script>
+
+        <script src="{% static 'backend/assets/js/pages/demo.crm-dashboard.js '%}"></script>
+        
+        <script src="{% static 'backend/vendor/simplemde/simplemde.min.js' %}"></script>
+        <script src="{% static 'backend/js/pages/demo.inbox.js' %}"></script>
+        <script src="{% static 'backend/assets/js/app.min.js '%}"></script>
+
+    </body>
+</html>

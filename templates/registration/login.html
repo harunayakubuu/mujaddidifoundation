@@ -1,0 +1,69 @@
+{% extends "front-base.html" %}
+{% load static %}
+
+{% block head_title %}Log in{% endblock head_title %}
+
+
+{% block content %}
+
+    <div class="breadcrumb-area text-center shadow dark bg-cover padding-xl text-light" style="background-image: url(assets/img/banner/23.jpg);">
+        <div class="container">
+            <div class="breadcrumb-items">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Log in</h2>
+                    </div>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="{% url 'pages:index' %}"><i class="fas fa-home"></i>Home</a></li>
+                    <li class="active">Log in</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-form-area default-padding">
+        <div class="container">
+            <div class="row align-center">
+                <div class="col-lg-6 contact-forms offset-lg-3">
+                    <div class="content">
+                        <div class="heading">
+                            <h3>Log in</h3>
+                        </div>
+
+                        <div class="col-md-12 alert-notification">
+                            <div id="message" class="alert-msg">
+                                {% include 'includes/alerts.html' %}
+                            </div>
+                        </div>
+
+                        {% if not request.user.is_authenticated %}
+                            <form method="POST" novalidate>
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            {{ form.as_table }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <button type="submit" name="submit" id="submit">
+                                            Sign in
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        {% else %}
+                            <p style="font-size: medium;">
+                                You are already logged in as <strong>{{ request.user.username }}</strong>. Would you like to <a href="{% url 'logout' %}">logout</a>?
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}

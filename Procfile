@@ -1,0 +1,1 @@
+web: gunicorn mujaddidi.wsgi --log-file -
