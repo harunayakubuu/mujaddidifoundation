@@ -109,7 +109,8 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="{% url 'pages:index' %}">
-                        <img src="{% static 'frontend/assets/img/logo.png' %}" class="logo" alt="Logo">
+                        Mujaddidi<br><small>Charitable Foundation</small>
+                        <!--<img src="{# static 'frontend/assets/img/logo.png' #}" class="logo" alt="Logo">-->
                     </a>
                 </div>
                 
@@ -168,7 +169,8 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-6 item">
                         <div class="f-item about">
-                            <img src="{% static 'frontend/assets/img/logo-light.png' %}" alt="Logo">
+                            <!--<img src="{% static 'frontend/assets/img/logo-light.png' %}" alt="Logo">-->
+                            <h2>Mujaddidi<br><small>Charitable Foundation</small></h2>
                             <p>
                                 Happen active county. Winding morning am shyness evident to. Garrets because elderly new manners however one village she.
                             </p>
@@ -190,6 +192,9 @@
                                     <a href="{# url 'donations:donate' #}#">Donate</a>
                                 </li>
                                 <li>
+                                    <a href="{% url 'pages:privacy' %}">Privacy</a>
+                                </li>
+                                <li>
                                     <a href="{% url 'pages:terms' %}">Terms</a>
                                 </li>
                             </ul>
@@ -203,7 +208,7 @@
                                 <ul>
                                     <li>
                                         <strong>Address:</strong>
-                                        5919 Trussville Crossings Pkwy, Birmingham AL 35235
+                                        Wunti Market Alogn Dass Road, Bauchi, Bauchi State. Nigeria.
                                     </li>
                                     <li>
                                         <strong>Email:</strong>
@@ -242,10 +247,15 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <p>&copy; Mujaddidi Foundation {% now 'Y' %}. Powered by <a href="#">Integral Solutions</a></p>
+                    <div class="col-md-4">
+                        <p>&copy; Mujaddidi Foundation {% now 'Y' %}.</p>
                     </div>
-                    <div class="col-md-6 text-right link">
+
+                    <div class="col-md-4 text-center">
+                        <p>Powered by <a href="#">Integral Solutions</a></p>
+                    </div>
+
+                    <div class="col-md-4 text-right link">
                         <ul>
                             <li>
                                 <a href="{% url 'pages:terms' %}">Terms</a>
