@@ -46,10 +46,12 @@
                 <div class="col-lg-6 info">
                     <ul>
                         <li>
-                            <i class="fas fa-envelope-open"></i> Info@gmail.com
+                            <i class="fas fa-envelope-open"></i> info@mujaddidifoundation.org
                         </li>
+                        
+
                         <li>
-                            <i class="fas fa-phone"></i> +123 456 7890
+                            <i class="fas fa-phone"></i> +234 70 3289 2994
                         </li>
                     </ul>
                 </div>
@@ -87,10 +89,7 @@
             </div>
         </div>
     </div>
-    <!-- End Header Top -->
 
-
-    <!-- Header ============================================= -->
     <header id="home">
 
         <!-- Start Navigation -->
@@ -101,30 +100,26 @@
                 <!-- Start Atribute Navigation -->
                 <div class="attr-nav border-less">
                     <ul>
-                        <li class="button"><a href="{% url 'donations:donate' %}"><i class="fas fa-heart"></i> Donate</a></li>
+                        <li class="button"><a href="{% url 'donations:donations' %}"><i class="fas fa-heart"></i> Donate</a></li>
                     </ul>
                 </div>        
-                <!-- End Atribute Navigation -->
-
-                <!-- Start Header Navigation -->
+                
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{% url 'pages:index' %}">
                         <img src="{% static 'frontend/assets/img/logo.png' %}" class="logo" alt="Logo">
                     </a>
                 </div>
-                <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
                         <li>
-                            <a href="{% url 'pages:index' %}" class="active">Home</a>
+                            <a href="{% url 'pages:index' %}" {% if '/' == request.path %}class="active"{% endif %}>Home</a>
                         </li>
                         <li>
-                            <a href="{% url 'pages:about_us' %}" class="active">About us</a>
+                            <a href="{% url 'pages:about_us' %}" {% if 'about-us' in request.path %}class="active" {% endif %}>About us</a>
                         </li>
                         
                         <li class="dropdown">
@@ -136,30 +131,25 @@
                         </li>
                         
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Event</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="event-1.html">Event Version One</a></li>
-                                <li><a href="event-2.html">Event Version Two</a></li>
-                            </ul>
+                            <a href="#" {% if 'events' in request.path %}class="active"{% endif %}>Event</a>
                         </li>
                         
                         <li>
-                            <a href="{% url 'blog:posts' %}">Blog</a>
+                            <a href="{% url 'blog:posts' %}" {% if 'posts' in request.path %}class="active"{% endif %}>Blog</a>
                         </li>
 
                         <li>
-                            <a href="#">Portfolio</a>
+                            <a href="#" {% if 'portfolio' in request.path %}class="active"{% endif %}>Portfolio</a>
                         </li>
                         
                         <li>
-                            <a href="{% url 'contacts:contact_form' %}">Contact us</a>
+                            <a href="{% url 'contacts:contact_form' %}" {% if 'contact-form' in request.path %}class="active"{% endif %}>Contact us</a>
                         </li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
+                </div>
             </div>
 
         </nav>
-        <!-- End Navigation -->
 
     </header>
     
@@ -195,17 +185,12 @@
                                 <li>
                                     <a href="#">Our Causes</a>
                                 </li>
+                                
                                 <li>
-                                    <a href="#">New Campaign</a>
+                                    <a href="{# url 'donations:donate' #}#">Donate</a>
                                 </li>
                                 <li>
-                                    <a href="#">Site Map</a>
-                                </li>
-                                <li>
-                                    <a href="#">Donate</a>
-                                </li>
-                                <li>
-                                    <a href="#">Terms</a>
+                                    <a href="{% url 'pages:terms' %}">Terms</a>
                                 </li>
                             </ul>
                         </div>
@@ -222,11 +207,11 @@
                                     </li>
                                     <li>
                                         <strong>Email:</strong>
-                                        <a href="mailto:info@validtheme.com">info@validtheme.com</a>
+                                        <a href="mailto:info@mujaddidifoundation.org">info@mujaddidifoundation.org</a>
                                     </li>
                                     <li>
                                         <strong>Phone:</strong>
-                                        <a href="tel:2151234567">+123 34598768</a>
+                                        <a href="tel:2151234567">+234 70 3289 2994</a>
                                     </li>
                                 </ul>
                             </div>
@@ -236,6 +221,7 @@
                     <div class="col-lg-3 col-md-6 item">
                         <div class="f-item recent-post">
                             <h4 class="widget-title">Latest News</h4>
+                            <!--
                             <div class="item">
                                 <a href="#">Delighted prevailed supported too not remainder perpetual.</a>
                                 <span><i class="fas fa-calendar-alt"></i> 22 Aug, 2020 -  <a href="#">Admin</a></span>
@@ -244,13 +230,15 @@
                                 <a href="#">Speaking trifling an to unpacked moderate debating learnin management. </a>
                                 <span><i class="fas fa-calendar-alt"></i> 15 Nov, 2020 -  <a href="#">User</a></span>
                             </div>
+                            -->
+                            No records
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-        <!-- Start Footer Bottom -->
+        
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
@@ -260,25 +248,22 @@
                     <div class="col-md-6 text-right link">
                         <ul>
                             <li>
-                                <a href="#">Terms</a>
+                                <a href="{% url 'pages:terms' %}">Terms</a>
                             </li>
                             <li>
-                                <a href="#">Privacy</a>
+                                <a href="{% url 'pages:privacy' %}">Privacy</a>
                             </li>
                             <li>
-                                <a href="#">Support</a>
+                                <a href="{% url 'contacts:contact_form' %}">Contact us</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End Footer Bottom -->
-    </footer>
-    <!-- End Footer -->
 
-    <!-- jQuery Frameworks
-    ============================================= -->
+    </footer>
+
     <script src="{% static 'frontend/assets/js/jquery-1.12.4.min.js' %}"></script>
     <script src="{% static 'frontend/assets/js/popper.min.js' %}"></script>
     <script src="{% static 'frontend/assets/js/bootstrap.min.js' %}"></script>

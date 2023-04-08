@@ -10,21 +10,18 @@
             <div class="breadcrumb-items">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Blog Grid</h2>
+                        <h2>Blog</h2>
                     </div>
                 </div>
                 <ul class="breadcrumb">
-                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'pages:index' %}"><i class="fas fa-home"></i> Home</a></li>
                     
                     <li class="active">Blog</li>
                 </ul>
             </div>
         </div>
     </div>
-    <!-- End Breadcrumb -->
 
-    <!-- Start Blog
-    ============================================= -->
     <div class="blog-area full-blog blog-standard full-blog grid-colum default-padding">
         <div class="container">
             <div class="blog-items content-less">
@@ -33,7 +30,7 @@
                     <div class="blog-item-box">
                         
                         <div class="row">
-                            <!-- Single Item -->
+                            
                             {% for post in posts %}
                             <div class="col-lg-4 col-md-6 single-item">
                                 <div class="item wow fadeInUp" data-wow-delay="500ms">
