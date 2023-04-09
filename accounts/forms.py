@@ -47,6 +47,17 @@ class StaffUserCreateForm(forms.ModelForm):
         }
 
 
+# Updating User Role by the admin
+class UserRoleEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('is_active', 'is_staff', 'is_superuser', 'role')
+
+        widgets = {
+            'role': forms.Select(attrs = {'class': 'form-select'}),
+        }
+
+
 # All users account update (staff and customers)
 class UserAccountEditForm(UserChangeForm):
     email = forms.EmailField(
@@ -71,15 +82,4 @@ class UserProfileEditForm(forms.ModelForm):
 
         help_texts = {
             'username': None,
-        }
-
-
-# Updating User Role by the admin
-class UserRoleEditForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('is_active', 'is_staff', 'is_superuser', 'role')
-
-        widgets = {
-            'role': forms.Select(attrs = {'class': 'form-select'}),
         }

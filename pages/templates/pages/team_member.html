@@ -1,0 +1,86 @@
+{% extends "front-base.html" %}
+{% load static %}
+
+{% block head_title %}Team{% endblock head_title %}
+
+
+{% block content %}
+
+    <div class="breadcrumb-area text-center shadow dark bg-fixed padding-xl text-light" style="background-image: url(assets/img/banner/19.jpg);">
+        <div class="container">
+            <div class="breadcrumb-items">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>{{ team_member.name }}</h2>
+                    </div>
+                </div>
+                <ul class="breadcrumb">
+                    <li><a href="{% url 'pages:index' %}"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'pages:team' %}">Team</a></li>
+                    <li class="active">{{ team_member.name }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+    <div class="causes-single-area default-padding">
+        <div class="container">
+            <div class="causes-single-items">
+                
+                <div class="row">
+                    <div class="col-lg-8 content offset-lg-2">
+
+                        <div class="info">
+                            <img src="{{ team_member.display_picture.url }}" alt="Thumb">
+                            <div class="top-entry">
+                                <div class="date">
+                                    <h4>{{ team_member.name }} &nbsp; <small>({{ team_member.designation|title }})</small></h4>
+                                </div>
+                                
+                            </div>
+                            
+                            <p>
+                                {{ team_member.about | linebreaks }}
+                            </p>
+                            
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="comments">
+                            <div class="comments-area">
+                                <div class="comments-title">
+                                    <h4>
+                                        Projects Participated
+                                    </h4>
+                                </div>
+                                <div class="comments-list">
+                                    <div class="commen-item">
+                                    
+                                        <div class="content">
+                                            <div class="title">
+                                                <h5>Project Name</h5>
+                                                <span>Completion Date: <i class="fas fa-clock"></i> 28 Aug, 2020</span>
+                                            </div>
+                                            <p>
+                                                Little about the project
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

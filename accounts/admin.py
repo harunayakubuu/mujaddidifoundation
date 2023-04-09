@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth import get_user_model
-from .models import Profile, FoundationCommittee
+from .models import Profile
 
 User = get_user_model()
 
@@ -33,10 +33,3 @@ class ProfileAdmin(admin.ModelAdmin):
     list_filter = ('created_date', 'updated_date')
 
 admin.site.register(Profile, ProfileAdmin)
-
-
-class FoundationCommitteeAdmin(admin.ModelAdmin):
-    list_display =('user', 'designation', 'created_date')
-    search_fields = ('user',)
-    ordering = ('user',)
-admin.site.register(FoundationCommittee, FoundationCommitteeAdmin)
