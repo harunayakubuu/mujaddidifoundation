@@ -102,7 +102,7 @@ AUTH_USER_MODEL = 'accounts.Account'
 
 import dj_database_url
 
-# DATABASE_URL = config('DATABASE_URL')
+DATABASE_URL = config('DATABASE_URL')
 
 DATABASES = {
     "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
