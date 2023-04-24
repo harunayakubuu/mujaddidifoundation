@@ -8,10 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Mujaddidi - Foundation & Charity">
 
-    <!-- ========== Page Title ========== -->
     <title>{% block head_title %} {% endblock head_title %} | Mujaddidi Foundation</title>
 
-    <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="{% static 'frontend/assets/img/favicon.png' %}" type="image/x-icon">
 
     <!-- ========== Start Stylesheet ========== -->
@@ -38,18 +36,14 @@
     <div class="se-pre-con"></div>
     <!-- Preloader Ends -->
 
-    <!-- Start Header Top 
-    ============================================= -->
     <div class="top-bar-area inc-pad bg-dark text-light">
         <div class="container-full">
             <div class="row align-center">
                 <div class="col-lg-6 info">
                     <ul>
                         <li>
-                            <i class="fas fa-envelope-open"></i> info@mujaddidifoundation.org
+                            <i class="fas fa-envelope-open"></i> Info@mujaddidifoundation.org
                         </li>
-                        
-
                         <li>
                             <i class="fas fa-phone"></i> +234 70 3289 2994
                         </li>
@@ -58,7 +52,6 @@
                 <div class="col-lg-6 text-right item-flex">
                     <div class="info">
                         <ul>
-
                             <li>
                                 {% if request.user.is_authenticated %}
                                 <a href="{% url 'accounts:dashboard' %}">Account</a>
@@ -82,7 +75,7 @@
                                     <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
-                           
+                            
                         </ul>
                     </div>
                 </div>
@@ -90,6 +83,8 @@
         </div>
     </div>
 
+
+    
     <header id="home">
 
         <!-- Start Navigation -->
@@ -99,9 +94,7 @@
 
                 <!-- Start Atribute Navigation -->
                 <div class="attr-nav border-less">
-                    <ul>
-                        <li class="button"><a href="{% url 'donations:donations' %}"><i class="fas fa-heart"></i> Donate</a></li>
-                    </ul>
+                    <a class="btn circle btn-theme border btn-sm align-right" href="{% url 'login' %}">Log in</a>
                 </div>        
                 
                 <div class="navbar-header">
@@ -112,6 +105,7 @@
                         Mujaddidi<br><small>Charitable Foundation</small>
                         <!--<img src="{# static 'frontend/assets/img/logo.png' #}" class="logo" alt="Logo">-->
                     </a>
+
                 </div>
                 
                 <div class="collapse navbar-collapse" id="navbar-menu">
@@ -132,7 +126,7 @@
                         </li>
                         
                         <li class="dropdown">
-                            <a href="#" {% if 'events' in request.path %}class="active"{% endif %}>Event</a>
+                            <a href="#" {% if 'events' in request.path %}class="active"{% endif %}>Events</a>
                         </li>
                         
                         <li>
@@ -147,6 +141,7 @@
                             <a href="{% url 'contacts:contact_form' %}" {% if 'contact-form' in request.path %}class="active"{% endif %}>Contact us</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
 
