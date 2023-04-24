@@ -94,7 +94,7 @@
 
                 <!-- Start Atribute Navigation -->
                 <div class="attr-nav border-less">
-                    <a class="btn circle btn-theme border btn-sm align-right" href="{% url 'login' %}">Log in</a>
+                    <a class="btn circle btn-theme border btn-xsm align-right" href="{% url 'login' %}">Log in</a>
                 </div>        
                 
                 <div class="navbar-header">
@@ -126,7 +126,7 @@
                         </li>
                         
                         <li class="dropdown">
-                            <a href="#" {% if 'events' in request.path %}class="active"{% endif %}>Events</a>
+                            <a href="{% url 'pages:events' %}" {% if 'events' in request.path %}class="active"{% endif %}>Events</a>
                         </li>
                         
                         <li>
@@ -166,8 +166,12 @@
                         <div class="f-item about">
                             <!--<img src="{% static 'frontend/assets/img/logo-light.png' %}" alt="Logo">-->
                             <h2>Mujaddidi<br><small>Charitable Foundation</small></h2>
-                            <p>
-                                Happen active county. Winding morning am shyness evident to. Garrets because elderly new manners however one village she.
+                            <p style="text-align:justify">
+                                We are a non-profit, charitable organization. We donate in causes that are critical to peace, security, health and education of the society.<br>
+                                Our activities currently cover Bauchi South Senatorial District only, hoping to go beyond to the conver the whole of Bauchi state and Nigeria
+                                at large.<br>
+                                We welcome donations from individuals, organizations, governments both local and international.<br>
+                                We welcome volunteers also for the help of humanity.
                             </p>
                             <form action="#">
                                 <input type="email" placeholder="Your Email" class="form-control" name="email">

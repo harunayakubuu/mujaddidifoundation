@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post
-from .models import FoundationCommittee
+from .models import Event, FoundationCommittee
 
 
 def index(request):
@@ -17,6 +17,14 @@ def about_us(request):
 
     }
     return render(request, 'pages/about_us.html', context)
+
+
+def events(request):
+    events = Event.objects.all()
+    context = {
+        'events': events
+    }
+    return render(request, 'pages/events.html', context)
 
 
 def privacy(request):

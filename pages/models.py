@@ -10,9 +10,16 @@ class FoundationCommittee(models.Model):
     gender = models.CharField(max_length = 6, choices = GENDER_CHOICES)
     DESIGNATION_CHOICES = (
         ('CHAIRMAN', 'Chairman'),
+        ('Secretary', 'Secretary'),
+        ('Education and Human Development', 'Education and Human Developmen'),
+        ('Humanitarian', 'Humanitarian Services'),
+        ('Dawa', 'Chairman'),
+        ('Works and Masjid', 'Chairman'),
+        ('Auditor', 'Auditor'),
+        ('Media and Publicity', 'Media and Publicity'),
     )
 
-    designation = models.CharField(max_length = 20, choices = DESIGNATION_CHOICES)
+    designation = models.CharField(max_length = 50, choices = DESIGNATION_CHOICES)
     words = models.CharField(max_length = 100)
     display_picture = models.ImageField(upload_to = 'pictures/foundation_committee/', help_text = "Width: 400px, Height: 400px")
     about = models.TextField()
@@ -48,3 +55,20 @@ class FoundationCommittee(models.Model):
     class Meta:
         verbose_name = 'Foundation Committee'
         verbose_name_plural = 'Foundation Committee'
+
+
+class Event(models.Model):
+    title = models.CharField(max_length = 50)
+    description = models.TextField()
+    event_location = models.CharField(max_length = 100)
+    event_picture = models.ImageField(upload_to = 'pictures/events')
+    event_date = models.DateField()
+    event_start_time = models.TimeField()
+    event_end_time = models.TimeField()
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Event'
+        verbose_name_plural = 'Events'
