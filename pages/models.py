@@ -21,7 +21,7 @@ class FoundationCommittee(models.Model):
 
     designation = models.CharField(max_length = 50, choices = DESIGNATION_CHOICES)
     words = models.CharField(max_length = 100)
-    display_picture = models.ImageField(upload_to = 'pictures/foundation_committee/', help_text = "Width: 400px, Height: 400px")
+    display_picture = models.ImageField(upload_to = 'pictures/foundation_committee/', help_text = "Width: 800px, Height: 900px")
     about = models.TextField()
     QUALIFICATION_CHOICES = (
         ('PhD', 'PhD.'),

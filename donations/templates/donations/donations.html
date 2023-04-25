@@ -31,10 +31,10 @@
             <div class="causes-items">
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- Single Item -->
+                        {% for donation in donations %}
                         <div class="grid-item">
                             <div class="row">
-                                <div class="thumb col-lg-5" style="background-image: url(assets/img/causes/11.jpg);">
+                                <div class="thumb col-lg-5" style="background-image: url('{% static "frontend/assets/img/causes/11.jpg" %}');">
                                     <span class="cats">Education</span>
                                 </div>
                                 <div class="info col-lg-7">
@@ -43,11 +43,11 @@
                                             <i class="fas fa-clock"></i> <strong>Created : </strong> Jul 15, 2020
                                         </div>
                                         <div class="location">
-                                            <i class="fas fa-map-marker-alt"></i> <strong>Location : </strong>  Mombasa, Africa
+                                            <i class="fas fa-map-marker-alt"></i> <strong>Location : </strong>  Toro, Bauchi
                                         </div>
                                     </div>
                                     <h3>
-                                        <a href="#">Give Education To Africa</a>
+                                        <a href="#">Education for Bauchi South</a>
                                     </h3>
                                     <p>
                                         Admiration stimulated cultivated reasonable be projection possession of. Real no near room ye bred sake if some. Is arranging furnished knowledge agreeable so. Fanny as smile up small. It vulgar chatty simple months. 
@@ -58,83 +58,18 @@
                                                 <span>33%</span>
                                             </div>
                                         </div>
-                                        <p>Raised : $5488 <span>Goal : $12800</span></p>
+                                        <p>Raised : &#8358;5,488,200 <span>Goal : &#8358;12,000,000</span></p>
                                     </div>
                                     <a class="btn circle btn-theme border btn-md" href="#">Donate Now</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="grid-item">
-                            <div class="row">
-                                <div class="thumb col-lg-5" style="background-image: url(assets/img/causes/22.jpg);">
-                                    <span class="cats">Water</span>
-                                </div>
-                                <div class="info col-lg-7">
-                                    <div class="top-entry">
-                                        <div class="date">
-                                            <i class="fas fa-clock"></i> <strong>Created : </strong> Aug 26, 2020
-                                        </div>
-                                        <div class="location">
-                                            <i class="fas fa-map-marker-alt"></i> <strong>Location : </strong>  Kusaka, Uganda
-                                        </div>
-                                    </div>
-                                    <h3>
-                                        <a href="#">Water For All Children</a>
-                                    </h3>
-                                    <p>
-                                        Admiration stimulated cultivated reasonable be projection possession of. Real no near room ye bred sake if some. Is arranging furnished knowledge agreeable so. Fanny as smile up small. It vulgar chatty simple months. 
-                                    </p>
-                                    <div class="progress-box">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" data-width="57">
-                                                <span>57%</span>
-                                            </div>
-                                        </div>
-                                        <p>Raised : $2890 <span>Goal : $5700</span></p>
-                                    </div>
-                                    <a class="btn circle btn-theme border btn-md" href="#">Donate Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
-                        <!-- Single Item -->
-                        <div class="grid-item">
-                            <div class="row">
-                                <div class="thumb col-lg-5" style="background-image: url(assets/img/causes/33.jpg);">
-                                    <span class="cats">Food</span>
-                                </div>
-                                <div class="info col-lg-7">
-                                    <div class="top-entry">
-                                        <div class="date">
-                                            <i class="fas fa-clock"></i> <strong>Created : </strong> Sep 06, 2020
-                                        </div>
-                                        <div class="location">
-                                            <i class="fas fa-map-marker-alt"></i> <strong>Location : </strong>  Mombasa, Syria
-                                        </div>
-                                    </div>
-                                    <h3>
-                                        <a href="#">Food for Syrian</a>
-                                    </h3>
-                                    <p>
-                                        Admiration stimulated cultivated reasonable be projection possession of. Real no near room ye bred sake if some. Is arranging furnished knowledge agreeable so. Fanny as smile up small. It vulgar chatty simple months. 
-                                    </p>
-                                    <div class="progress-box">
-                                        <div class="progress">
-                                            <div class="progress-bar" role="progressbar" data-width="68">
-                                                <span>68%</span>
-                                            </div>
-                                        </div>
-                                        <p>Raised : $5488 <span>Goal : $8900</span></p>
-                                    </div>
-                                    <a class="btn circle btn-theme border btn-md" href="#">Donate Now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single Item -->
+                        {% empty %}
+                            No records.
+                        {% endfor %}
                     </div>
-                    <!-- Paginatin -->
+                    
+                    <!--
                     <div class="donation-pagi text-center col-lg-12">
                         <div class="row">
                             <div class="col-lg-12">
@@ -150,7 +85,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End Paginatin -->
+                    -->
+                    
                 </div>
             </div>
         </div>
